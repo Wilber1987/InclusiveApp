@@ -52,3 +52,24 @@ article.SectionElement {
 iframe.SectionElement {
    width: 100%;
 }
+
+w-form-view{
+    display: block;
+}
+w-form-view h4{
+    display: block;
+    text-align: left;
+    padding-left: 10px ;
+}
+w-form-view input[type=text], w-form-view input[type=number]{
+    display: block;
+    padding: 7px;
+    border-radius: 0.2cm;
+    border: solid 1px #6b6b70;
+    width: 95%;
+    flex: 1;
+}
+w-form-view .sectionResp{
+    display: flex;
+    justify-content: center;
+}

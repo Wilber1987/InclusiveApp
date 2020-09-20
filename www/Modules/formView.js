@@ -22,7 +22,7 @@ class FormView extends HTMLElement{
                 ]
             }
             let OptionSections = {
-                type: "div", props: {}, children:[]
+                type: "div", props: {class: "sectionResp"}, children:[]
             }            
             const pregsOptions = this.data[2].filter(
                 p => p.IdQuestion == preg.IdQuestion);
