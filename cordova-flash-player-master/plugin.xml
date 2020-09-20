@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.reallyenglish.plugin.flash-player" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>FlashPlayer</name>
+  <!-- Plugin source code: Core -->
+  <js-module src="www/flash-player.js" name="FlashPlayer">
+    <clobbers target="window.FlashPlayer" />
+  </js-module>
+  <asset src="www/player.swf" target="scripts/player.swf" />
+</plugin>
