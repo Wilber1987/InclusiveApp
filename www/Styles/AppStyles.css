@@ -4,7 +4,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 header {
-  background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+  /* background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%); */
+  background-color: #999fbd;
   height: 50px;
   content: "MyInclusiveApp";
   color: rgb(255, 255, 255);
@@ -46,9 +47,10 @@ header .btnMenu{
 main {
   margin-top: 50px;
   height: calc(100% - 120px);
-  padding: 10px;
+  padding: 0px;
   overflow-y: auto;
   bottom: 50px;
+  background-color: #edf0fa;
 }
 nav {
   z-index: 1;
@@ -57,7 +59,7 @@ nav {
   height: 100%;
   width: 100%;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   margin: 0;
   z-index: 2;
 }
@@ -67,24 +69,22 @@ nav {
   margin: 0px;
   padding: 0px;
   height: 100%;
-  background-color: rgb(73, 73, 73);
+  background-color: rgb(33, 36, 41);
 }
 .MyNav ul li {
   width: 100%;
   margin: 0;
   padding: 0;
   color: #fff;
-  border-bottom: 1px #fff solid;
-  background-color: rgb(73, 73, 73);
 }
 .MyNav ul li a {
   padding: 10px;
   display: block;
-  color: #fff;
+  color: rgb(223, 223, 223);
   text-decoration: none;
   margin: 0px;
   border-bottom: 1px #fff solid;
-  background-color: rgb(73, 73, 73);
+ 
 }
 
 .myFooter {
