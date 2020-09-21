@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="MyStyle.css" rel="stylesheet" />
+    <script src="../Scripts/myScript.js"></script>
+    <script type="text/javascript">
+        const Load = async () => {
+            let response = await fetch('../api/movie/GetMyMovies', {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            });
+            response = await response.json();
+            response[0].forEach((data) => {              
+                const div = {
+                    type: "div", children: [
+                        { type: "label", children: [data.ID.toString()] },
+                        { type: "label", children: [data.Title] },
+                        { type: "label", children: [data.PropReleaseDate] },
+                        { type: "label", children: [data.Price.toString()] },
+                    ]
+                }
+                TopMovies.append(Render(div));
+            });
+            response[1].forEach((data) => {
+                const div = {
+                    type: "div", children: [
+                        { type: "label", children: [data.ID.toString()] },
+                        { type: "label", children: [data.Title] },
+                        { type: "label", children: [data.PropReleaseDate] },
+                        { type: "label", children: [data.Price.toString()] },
+                    ]
+                }
+                LastMovies.append(Render(div));
+            });
+        }
+        window.Load = Load();
+    </script>
+</head>
+<body id="MyBody">
+    <h1>Top Movies</h1>
+    <div id="TopMovies"></div>
+    <h1>Last Movies</h1>
+    <div id="LastMovies"></div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+﻿body {
+}
+body div{
+    display:block;
+}
+    body div label {
+        display:inline-block;
+        margin:5px;
+        padding:10px;
+        border:solid 1px #808080;
+        border-radius: 0.2cm;
+    }

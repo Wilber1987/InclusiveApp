@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Product App</title>
+</head>
+<body>
+
+    <div>
+        <h2>All Products</h2>
+        <ul id="products" />
+    </div>
+    <div>
+        <h2>Search by ID</h2>
+        <input type="text" id="prodId" size="5" />
+        <input type="button" value="Search" onclick="find();" />     
+    </div>
+   
+    <script>
+        var uri = 'api/products';
+
+        function formatItem() {
+                 
+        }
+        function find() {
+            fetch('api/products/GetAllProducts', {
+                method: 'get',
+                headers: { 'Content-Type': 'application/json' },
+                //body: JSON.stringify({ description: "Some text here" })
+            });
+        }
+        function find2() {
+            fetch('api/products/PostTakeProducts2', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ obj: "Some text here" })
+            });
+        }
+        function find3() {
+            fetch('api/movie/GetMyMovies', {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+        function find4() {
+            let response = fetch( 'api/module/PostMyModules', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ IdUser: "1" })
+            });
+        }
+    </script>
+</body>
+</html>

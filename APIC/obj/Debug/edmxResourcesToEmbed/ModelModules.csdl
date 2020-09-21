@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="INCLUSIVE_BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CatTypeQuestion">
+    <Key>
+      <PropertyRef Name="IdType" />
+    </Key>
+    <Property Name="IdType" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblQuestion" Relationship="Self.FK_TblQuestion_CatTypeQuestion" FromRole="CatTypeQuestion" ToRole="TblQuestion" />
+  </EntityType>
+  <EntityType Name="CatTypeSection">
+    <Key>
+      <PropertyRef Name="IdType" />
+    </Key>
+    <Property Name="IdType" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblSections" Relationship="Self.FK_TblSections_CatTypeSection" FromRole="CatTypeSection" ToRole="TblSections" />
+  </EntityType>
+  <EntityType Name="RolPermission">
+    <Key>
+      <PropertyRef Name="IdPermission" />
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdPermission" Type="Int32" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblPermission" Relationship="Self.FK_RolPermission_TblPermission" FromRole="RolPermission" ToRole="TblPermission" />
+    <NavigationProperty Name="TblRol" Relationship="Self.FK_RolPermission_TblRol" FromRole="RolPermission" ToRole="TblRol" />
+  </EntityType>
+  <EntityType Name="TblForm">
+    <Key>
+      <PropertyRef Name="IdForm" />
+    </Key>
+    <Property Name="IdForm" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblQuestion" Relationship="Self.FK_TblQuestion_TblForm" FromRole="TblForm" ToRole="TblQuestion" />
+  </EntityType>
+  <EntityType Name="TblModulos">
+    <Key>
+      <PropertyRef Name="IdModules" />
+    </Key>
+    <Property Name="IdModules" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdUserCreator" Type="Int32" />
+    <NavigationProperty Name="TblUsers" Relationship="Self.FK_TblModulos_TblUsers" FromRole="TblModulos" ToRole="TblUsers" />
+    <NavigationProperty Name="TblMyModules" Relationship="Self.FK_TblMyModules_TblModulos" FromRole="TblModulos" ToRole="TblMyModules" />
+    <NavigationProperty Name="TblSections" Relationship="Self.FK_TblSections_TblModulos" FromRole="TblModulos" ToRole="TblSections" />
+  </EntityType>
+  <EntityType Name="TblMyModules">
+    <Key>
+      <PropertyRef Name="IdUser" />
+      <PropertyRef Name="IdModules" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="IdModules" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="TblModulos" Relationship="Self.FK_TblMyModules_TblModulos" FromRole="TblMyModules" ToRole="TblModulos" />
+    <NavigationProperty Name="TblUsers" Relationship="Self.FK_TblMyModules_TblUsers" FromRole="TblMyModules" ToRole="TblUsers" />
+  </EntityType>
+  <EntityType Name="TblPermission">
+    <Key>
+      <PropertyRef Name="IdPermission" />
+    </Key>
+    <Property Name="IdPermission" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RolPermission" Relationship="Self.FK_RolPermission_TblPermission" FromRole="TblPermission" ToRole="RolPermission" />
+  </EntityType>
+  <EntityType Name="TblQuestion">
+    <Key>
+      <PropertyRef Name="IdQuestion" />
+    </Key>
+    <Property Name="IdQuestion" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IdType" Type="Int32" />
+    <Property Name="IdForm" Type="Int32" />
+    <NavigationProperty Name="CatTypeQuestion" Relationship="Self.FK_TblQuestion_CatTypeQuestion" FromRole="TblQuestion" ToRole="CatTypeQuestion" />
+    <NavigationProperty Name="TblForm" Relationship="Self.FK_TblQuestion_TblForm" FromRole="TblQuestion" ToRole="TblForm" />
+    <NavigationProperty Name="TblQuestionOptions" Relationship="Self.FK_TblQuestionOptions_TblQuestion" FromRole="TblQuestion" ToRole="TblQuestionOptions" />
+  </EntityType>
+  <EntityType Name="TblQuestionOptions">
+    <Key>
+      <PropertyRef Name="IdQuestionOption" />
+    </Key>
+    <Property Name="IdQuestionOption" Type="Int32" Nullable="false" />
+    <Property Name="IdQuestion" Type="Int32" />
+    <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblQuestion" Relationship="Self.FK_TblQuestionOptions_TblQuestion" FromRole="TblQuestionOptions" ToRole="TblQuestion" />
+    <NavigationProperty Name="UsersResponse" Relationship="Self.FK_UsersResponse_TblQuestionOptions" FromRole="TblQuestionOptions" ToRole="UsersResponse" />
+    <Property Name="OptionDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TblRol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RolPermission" Relationship="Self.FK_RolPermission_TblRol" FromRole="TblRol" ToRole="RolPermission" />
+    <NavigationProperty Name="TblUsersRol" Relationship="Self.FK_TblUsersRol_TblRol" FromRole="TblRol" ToRole="TblUsersRol" />
+  </EntityType>
+  <EntityType Name="TblSections">
+    <Key>
+      <PropertyRef Name="IdSection" />
+    </Key>
+    <Property Name="IdSection" Type="Int32" Nullable="false" />
+    <Property Name="IdModules" Type="Int32" />
+    <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UrlContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IdType" Type="Int32" />
+    <NavigationProperty Name="CatTypeSection" Relationship="Self.FK_TblSections_CatTypeSection" FromRole="TblSections" ToRole="CatTypeSection" />
+    <NavigationProperty Name="TblModulos" Relationship="Self.FK_TblSections_TblModulos" FromRole="TblSections" ToRole="TblModulos" />
+  </EntityType>
+  <EntityType Name="TblUsers">
+    <Key>
+      <PropertyRef Name="IdUsers" />
+    </Key>
+    <Property Name="IdUsers" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblModulos" Relationship="Self.FK_TblModulos_TblUsers" FromRole="TblUsers" ToRole="TblModulos" />
+    <NavigationProperty Name="TblMyModules" Relationship="Self.FK_TblMyModules_TblUsers" FromRole="TblUsers" ToRole="TblMyModules" />
+    <NavigationProperty Name="TblUsersRol" Relationship="Self.FK_TblUsersRol_TblUsers" FromRole="TblUsers" ToRole="TblUsersRol" />
+    <NavigationProperty Name="UsersResponse" Relationship="Self.FK_UsersResponse_TblUsers" FromRole="TblUsers" ToRole="UsersResponse" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TblUsersRol">
+    <Key>
+      <PropertyRef Name="IdUser" />
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblRol" Relationship="Self.FK_TblUsersRol_TblRol" FromRole="TblUsersRol" ToRole="TblRol" />
+    <NavigationProperty Name="TblUsers" Relationship="Self.FK_TblUsersRol_TblUsers" FromRole="TblUsersRol" ToRole="TblUsers" />
+  </EntityType>
+  <EntityType Name="UsersResponse">
+    <Key>
+      <PropertyRef Name="IdUser" />
+      <PropertyRef Name="IdQuestionOptions" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="IdQuestionOptions" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="TblQuestionOptions" Relationship="Self.FK_UsersResponse_TblQuestionOptions" FromRole="UsersResponse" ToRole="TblQuestionOptions" />
+    <NavigationProperty Name="TblUsers" Relationship="Self.FK_UsersResponse_TblUsers" FromRole="UsersResponse" ToRole="TblUsers" />
+  </EntityType>
+  <Association Name="FK_TblQuestion_CatTypeQuestion">
+    <End Role="CatTypeQuestion" Type="Self.CatTypeQuestion" Multiplicity="0..1" />
+    <End Role="TblQuestion" Type="Self.TblQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatTypeQuestion">
+        <PropertyRef Name="IdType" />
+      </Principal>
+      <Dependent Role="TblQuestion">
+        <PropertyRef Name="IdType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSections_CatTypeSection">
+    <End Role="CatTypeSection" Type="Self.CatTypeSection" Multiplicity="0..1" />
+    <End Role="TblSections" Type="Self.TblSections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatTypeSection">
+        <PropertyRef Name="IdType" />
+      </Principal>
+      <Dependent Role="TblSections">
+        <PropertyRef Name="IdType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolPermission_TblPermission">
+    <End Role="TblPermission" Type="Self.TblPermission" Multiplicity="1" />
+    <End Role="RolPermission" Type="Self.RolPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblPermission">
+        <PropertyRef Name="IdPermission" />
+      </Principal>
+      <Dependent Role="RolPermission">
+        <PropertyRef Name="IdPermission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolPermission_TblRol">
+    <End Role="TblRol" Type="Self.TblRol" Multiplicity="1" />
+    <End Role="RolPermission" Type="Self.RolPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblRol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="RolPermission">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblQuestion_TblForm">
+    <End Role="TblForm" Type="Self.TblForm" Multiplicity="0..1" />
+    <End Role="TblQuestion" Type="Self.TblQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblForm">
+        <PropertyRef Name="IdForm" />
+      </Principal>
+      <Dependent Role="TblQuestion">
+        <PropertyRef Name="IdForm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblModulos_TblUsers">
+    <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="0..1" />
+    <End Role="TblModulos" Type="Self.TblModulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUsers">
+        <PropertyRef Name="IdUsers" />
+      </Principal>
+      <Dependent Role="TblModulos">
+        <PropertyRef Name="IdUserCreator" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblMyModules_TblModulos">
+    <End Role="TblModulos" Type="Self.TblModulos" Multiplicity="1" />
+    <End Role="TblMyModules" Type="Self.TblMyModules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblModulos">
+        <PropertyRef Name="IdModules" />
+      </Principal>
+      <Dependent Role="TblMyModules">
+        <PropertyRef Name="IdModules" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSections_TblModulos">
+    <End Role="TblModulos" Type="Self.TblModulos" Multiplicity="0..1" />
+    <End Role="TblSections" Type="Self.TblSections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblModulos">
+        <PropertyRef Name="IdModules" />
+      </Principal>
+      <Dependent Role="TblSections">
+        <PropertyRef Name="IdModules" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblMyModules_TblUsers">
+    <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="1" />
+    <End Role="TblMyModules" Type="Self.TblMyModules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUsers">
+        <PropertyRef Name="IdUsers" />
+      </Principal>
+      <Dependent Role="TblMyModules">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblQuestionOptions_TblQuestion">
+    <End Role="TblQuestion" Type="Self.TblQuestion" Multiplicity="0..1" />
+    <End Role="TblQuestionOptions" Type="Self.TblQuestionOptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblQuestion">
+        <PropertyRef Name="IdQuestion" />
+      </Principal>
+      <Dependent Role="TblQuestionOptions">
+        <PropertyRef Name="IdQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersResponse_TblQuestionOptions">
+    <End Role="TblQuestionOptions" Type="Self.TblQuestionOptions" Multiplicity="1" />
+    <End Role="UsersResponse" Type="Self.UsersResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblQuestionOptions">
+        <PropertyRef Name="IdQuestionOption" />
+      </Principal>
+      <Dependent Role="UsersResponse">
+        <PropertyRef Name="IdQuestionOptions" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblUsersRol_TblRol">
+    <End Role="TblRol" Type="Self.TblRol" Multiplicity="1" />
+    <End Role="TblUsersRol" Type="Self.TblUsersRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblRol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="TblUsersRol">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblUsersRol_TblUsers">
+    <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="1" />
+    <End Role="TblUsersRol" Type="Self.TblUsersRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUsers">
+        <PropertyRef Name="IdUsers" />
+      </Principal>
+      <Dependent Role="TblUsersRol">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersResponse_TblUsers">
+    <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="1" />
+    <End Role="UsersResponse" Type="Self.UsersResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUsers">
+        <PropertyRef Name="IdUsers" />
+      </Principal>
+      <Dependent Role="UsersResponse">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="INCLUSIVE_BDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CatTypeQuestion" EntityType="Self.CatTypeQuestion" />
+    <EntitySet Name="CatTypeSection" EntityType="Self.CatTypeSection" />
+    <EntitySet Name="RolPermission" EntityType="Self.RolPermission" />
+    <EntitySet Name="TblForm" EntityType="Self.TblForm" />
+    <EntitySet Name="TblModulos" EntityType="Self.TblModulos" />
+    <EntitySet Name="TblMyModules" EntityType="Self.TblMyModules" />
+    <EntitySet Name="TblPermission" EntityType="Self.TblPermission" />
+    <EntitySet Name="TblQuestion" EntityType="Self.TblQuestion" />
+    <EntitySet Name="TblQuestionOptions" EntityType="Self.TblQuestionOptions" />
+    <EntitySet Name="TblRol" EntityType="Self.TblRol" />
+    <EntitySet Name="TblSections" EntityType="Self.TblSections" />
+    <EntitySet Name="TblUsers" EntityType="Self.TblUsers" />
+    <EntitySet Name="TblUsersRol" EntityType="Self.TblUsersRol" />
+    <EntitySet Name="UsersResponse" EntityType="Self.UsersResponse" />
+    <AssociationSet Name="FK_TblQuestion_CatTypeQuestion" Association="Self.FK_TblQuestion_CatTypeQuestion">
+      <End Role="CatTypeQuestion" EntitySet="CatTypeQuestion" />
+      <End Role="TblQuestion" EntitySet="TblQuestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSections_CatTypeSection" Association="Self.FK_TblSections_CatTypeSection">
+      <End Role="CatTypeSection" EntitySet="CatTypeSection" />
+      <End Role="TblSections" EntitySet="TblSections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolPermission_TblPermission" Association="Self.FK_RolPermission_TblPermission">
+      <End Role="TblPermission" EntitySet="TblPermission" />
+      <End Role="RolPermission" EntitySet="RolPermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolPermission_TblRol" Association="Self.FK_RolPermission_TblRol">
+      <End Role="TblRol" EntitySet="TblRol" />
+      <End Role="RolPermission" EntitySet="RolPermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblQuestion_TblForm" Association="Self.FK_TblQuestion_TblForm">
+      <End Role="TblForm" EntitySet="TblForm" />
+      <End Role="TblQuestion" EntitySet="TblQuestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblModulos_TblUsers" Association="Self.FK_TblModulos_TblUsers">
+      <End Role="TblUsers" EntitySet="TblUsers" />
+      <End Role="TblModulos" EntitySet="TblModulos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblMyModules_TblModulos" Association="Self.FK_TblMyModules_TblModulos">
+      <End Role="TblModulos" EntitySet="TblModulos" />
+      <End Role="TblMyModules" EntitySet="TblMyModules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSections_TblModulos" Association="Self.FK_TblSections_TblModulos">
+      <End Role="TblModulos" EntitySet="TblModulos" />
+      <End Role="TblSections" EntitySet="TblSections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblMyModules_TblUsers" Association="Self.FK_TblMyModules_TblUsers">
+      <End Role="TblUsers" EntitySet="TblUsers" />
+      <End Role="TblMyModules" EntitySet="TblMyModules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblQuestionOptions_TblQuestion" Association="Self.FK_TblQuestionOptions_TblQuestion">
+      <End Role="TblQuestion" EntitySet="TblQuestion" />
+      <End Role="TblQuestionOptions" EntitySet="TblQuestionOptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersResponse_TblQuestionOptions" Association="Self.FK_UsersResponse_TblQuestionOptions">
+      <End Role="TblQuestionOptions" EntitySet="TblQuestionOptions" />
+      <End Role="UsersResponse" EntitySet="UsersResponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblUsersRol_TblRol" Association="Self.FK_TblUsersRol_TblRol">
+      <End Role="TblRol" EntitySet="TblRol" />
+      <End Role="TblUsersRol" EntitySet="TblUsersRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblUsersRol_TblUsers" Association="Self.FK_TblUsersRol_TblUsers">
+      <End Role="TblUsers" EntitySet="TblUsers" />
+      <End Role="TblUsersRol" EntitySet="TblUsersRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersResponse_TblUsers" Association="Self.FK_UsersResponse_TblUsers">
+      <End Role="TblUsers" EntitySet="TblUsers" />
+      <End Role="UsersResponse" EntitySet="UsersResponse" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

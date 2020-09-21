@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="INCLUSIVE_BDModelStoreContainer" CdmEntityContainer="INCLUSIVE_BDEntities">
+    <EntitySetMapping Name="CatTypeQuestion">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.CatTypeQuestion">
+        <MappingFragment StoreEntitySet="CatTypeQuestion">
+          <ScalarProperty Name="IdType" ColumnName="IdType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatTypeSection">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.CatTypeSection">
+        <MappingFragment StoreEntitySet="CatTypeSection">
+          <ScalarProperty Name="IdType" ColumnName="IdType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolPermission">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.RolPermission">
+        <MappingFragment StoreEntitySet="RolPermission">
+          <ScalarProperty Name="IdPermission" ColumnName="IdPermission" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblForm">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblForm">
+        <MappingFragment StoreEntitySet="TblForm">
+          <ScalarProperty Name="IdForm" ColumnName="IdForm" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblModulos">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblModulos">
+        <MappingFragment StoreEntitySet="TblModulos">
+          <ScalarProperty Name="IdModules" ColumnName="IdModules" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="IdUserCreator" ColumnName="IdUserCreator" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblMyModules">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblMyModules">
+        <MappingFragment StoreEntitySet="TblMyModules">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="IdModules" ColumnName="IdModules" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblPermission">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblPermission">
+        <MappingFragment StoreEntitySet="TblPermission">
+          <ScalarProperty Name="IdPermission" ColumnName="IdPermission" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblQuestion">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblQuestion">
+        <MappingFragment StoreEntitySet="TblQuestion">
+          <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IdType" ColumnName="IdType" />
+          <ScalarProperty Name="IdForm" ColumnName="IdForm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblQuestionOptions">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblQuestionOptions">
+        <MappingFragment StoreEntitySet="TblQuestionOptions">
+          <ScalarProperty Name="OptionDesc" ColumnName="OptionDesc" />
+          <ScalarProperty Name="IdQuestionOption" ColumnName="IdQuestionOption" />
+          <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblRol">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblRol">
+        <MappingFragment StoreEntitySet="TblRol">
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblSections">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblSections">
+        <MappingFragment StoreEntitySet="TblSections">
+          <ScalarProperty Name="IdSection" ColumnName="IdSection" />
+          <ScalarProperty Name="IdModules" ColumnName="IdModules" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="UrlContent" ColumnName="UrlContent" />
+          <ScalarProperty Name="IdType" ColumnName="IdType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblUsers">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblUsers">
+        <MappingFragment StoreEntitySet="TblUsers">
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="IdUsers" ColumnName="IdUsers" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblUsersRol">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblUsersRol">
+        <MappingFragment StoreEntitySet="TblUsersRol">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersResponse">
+      <EntityTypeMapping TypeName="INCLUSIVE_BDModel.UsersResponse">
+        <MappingFragment StoreEntitySet="UsersResponse">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="IdQuestionOptions" ColumnName="IdQuestionOptions" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

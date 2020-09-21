@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cdd5dd8e06074548bcce87dd0d394580" Name="Diagram1">
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.CatTypeQuestion" Width="1.5" PointX="1.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.CatTypeSection" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.RolPermission" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.TblForm" Width="1.5" PointX="1.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.TblModulos" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.TblMyModules" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.TblPermission" Width="1.5" PointX="3.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.TblQuestion" Width="1.5" PointX="1.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.TblQuestionOptions" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.TblRol" Width="1.5" PointX="3.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.TblSections" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.TblUsers" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.TblUsersRol" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INCLUSIVE_BDModel.UsersResponse" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblQuestion_CatTypeQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblSections_CatTypeSection" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_RolPermission_TblPermission" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_RolPermission_TblRol" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblQuestion_TblForm" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblModulos_TblUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblMyModules_TblModulos" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblSections_TblModulos" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblMyModules_TblUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblQuestionOptions_TblQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_UsersResponse_TblQuestionOptions" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblUsersRol_TblRol" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblUsersRol_TblUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="INCLUSIVE_BDModel.FK_UsersResponse_TblUsers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
