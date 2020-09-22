@@ -36,6 +36,7 @@ function DisplayAcordeon(value, SectionId, size = null) {
       }
   }
 
+  //*****DOM TOOLS */
 
   //AJAXTOOLS----------------------------------------
 
@@ -81,6 +82,8 @@ const GetRequest = async (Url)=>{
     return response;
   }
 }
+
+
 
 
   

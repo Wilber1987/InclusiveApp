@@ -31,11 +31,11 @@ class FormView extends HTMLElement{
                 //NO IMPLEMENTED                                
             }
             //-----------------------------------
-            console.log(this.data[2]);
-            console.log(pregsOptions);
+            //console.log(this.data[2]);
+           // console.log(pregsOptions);
             pregsOptions.forEach(pregOption => {                
                 OptionSections.children.push(
-                    {type: "div", props: {}, children:[
+                    {type: "div", props: {class: "divOption"}, children:[
                         {type: "label", props: {
                             for: `preg${preg.IdQuestion}_${pregOption.IdQuestionOption}`
                         },children:[pregOption.OptionDesc]},
