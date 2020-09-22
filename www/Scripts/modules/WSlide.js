@@ -73,8 +73,8 @@ class WSlide extends HTMLElement{
     }
     showSlides = (n)=>{
         var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
+        var slides = this.getElementsByClassName("mySlides");
+        var dots = this.getElementsByClassName("dot");
         if (n > slides.length) {this.slideIndex = 1}    
         if (n < 1) {this.slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) {
