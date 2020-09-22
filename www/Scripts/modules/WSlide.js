@@ -1,27 +1,51 @@
 class WSlide extends HTMLElement{
-    constructor(){
-        super(); 
-        this.style = "display:block"; 
+    constructor(){        
+        super();  
         this.slideIndex = 1;      
-    }
+    }    
     attributeChangedCallBack(){
-        this.DrawChart();
+        this.DrawSlide();
     }
     connectedCallback(){           
         if (this.innerHTML != "") {            
             return;
         }
-        this.DrawForm();
+        //this.style.display = "block"; 
+        this.DrawSlide();
+        this.showSlides(this.slideIndex);
     }
     DrawSlide = async () =>{    
         let frag = {type: "div", props: {class: "slideshow-container"}, children:[StyleForSlide]}
         let dotContainer = {type: "div", props: {class: "dot-container"}, children:[]}
-        let slides = ["zdsfsdf", "zsfdazsd"];
-        slides.forEach((element, index = 1) => {
+        //console.log( this.content);
+        if (typeof this.content !== "string" ) {
+            this.append("Este componente solo soporta textos por contenido");
+            return;
+        }
+        let NumSlides = this.content.length / 300; 
+        let Slides = [];
+        let inicio = 0;
+        let fin = 300;
+        for (let index = 0; index < NumSlides; index++) {
+            var cadena = this.content.slice(inicio, fin);
+            inicio = inicio + 300;
+            fin = fin + 300;
+            if (index > 0) {
+                cadena = "..."+cadena;
+            }
+            if (index < NumSlides - 1) {                
+                if (cadena.charAt(cadena.length-1).includes(" ")) {
+                    cadena = cadena.slice(0, -1);
+                }
+                cadena = cadena + "...";
+            }
+            Slides.push(cadena);
+        }
+        Slides.forEach((element, index = 1) => {
             frag.children.push(
                 {type: "div", props: {class: "mySlides"},
                  children:[
-                    {type: "q", children: [element.content]}
+                    {type: "p", children: [element]}
                  ]}
             );
             dotContainer.children.push(
@@ -42,25 +66,25 @@ class WSlide extends HTMLElement{
         this.append(createElement(frag), createElement(dotContainer));
     }
     plusSlides(n) {
-        this.showSlides(slideIndex += n);
+        this.showSlides(this.slideIndex += n);
     }
     currentSlide(n) {
-        this.showSlides(slideIndex = n);
+        this.showSlides(this.slideIndex = n);
     }
     showSlides = (n)=>{
         var i;
         var slides = document.getElementsByClassName("mySlides");
         var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}    
-        if (n < 1) {slideIndex = slides.length}
+        if (n > slides.length) {this.slideIndex = 1}    
+        if (n < 1) {this.slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";  
         }
         for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", "");
         }
-        slides[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
+        slides[this.slideIndex-1].style.display = "block";  
+        dots[this.slideIndex-1].className += " active";
     }
 }
 const StyleForSlide = {
@@ -74,8 +98,12 @@ const StyleForSlide = {
       }      
       .mySlides {
         display: none;
-        padding: 80px;
-        text-align: center;
+        padding: 20px 50px;
+        height: 280px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        text-align: justify;
+        white-space:pre-wrap;
       }
       .prev, .next {
         cursor: pointer;
@@ -93,6 +121,11 @@ const StyleForSlide = {
       .next {
         position: absolute;
         right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      .prev {
+        position: absolute;
+        left: 0;
         border-radius: 3px 0 0 3px;
       }
       .prev:hover, .next:hover {
@@ -121,4 +154,4 @@ const StyleForSlide = {
       .author {color: cornflowerblue;}
     `]
 }
-customElements.define("w-slide-view", WSlide);
+customElements.define("w-slide-viewtext", WSlide);

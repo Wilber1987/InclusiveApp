@@ -91,6 +91,7 @@ function createElement(Node) {
                 || typeof Node.props[prop] === "object" ) {
                 element[prop] = Node.props[prop];
             }else {
+                element[prop] = Node.props[prop];
                 element.setAttribute(prop,Node.props[prop])
             }
         }

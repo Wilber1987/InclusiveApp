@@ -72,7 +72,7 @@ class Modules{
                     {type: "label",props:{ class: "labelCard" },
                             children:[element.Title]},
                     {type: "p",props:{ class: "pCard"}, children:[element.Description]}, 
-                    {type: "div", props:{id:element.id+"Container"}, children:[
+                    {type: "div", props:{id:element.id+"Container", class:"cardDivOptions"}, children:[
                         {type: "button", props:{class: "BtnSecundary", type: "button", onclick: async ()=>{
                             //MODELO
                             /*

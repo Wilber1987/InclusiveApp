@@ -95,8 +95,8 @@ class ModulesView{
                     view.type = "label";
                     view.children.push("Esto es una imagen");
                 }else {
-                    view.type = "article";
-                    view.children.push(element.UrlContent);
+                    view.type = "w-slide-viewtext";                    
+                    view.props.content = element.UrlContent;        
                 }
                 obj.children.push(view);
                 Sections.push(obj);
@@ -120,7 +120,6 @@ class ModulesView{
         let v = document.getElementById(obj.id);
         //console.log(v);
         v.append(canvas);         
-    }      
-   
+    }     
 }
 //export {ModulesView}
