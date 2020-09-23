@@ -54,7 +54,7 @@ class WSlide extends HTMLElement{
                 }}}
             );
             index++;
-        });   
+        });  
         frag.children.push(
             {type: "a", props:{class:"prev", onclick : ()=>{ this.plusSlides(-1); }},
             children: ["❮"]}
@@ -90,13 +90,13 @@ class WSlide extends HTMLElement{
 const StyleForSlide = {
     type: "style", props : {},
     children: [` 
-    .slideshow-container {
+    w-slide-viewtext .slideshow-container {
         box-sizing: border-box;
         position: relative;
         background: #f1f1f1f1;
         font-family: Verdana, sans-serif; margin:0;
       }      
-      .mySlides {
+      w-slide-viewtext .mySlides {
         display: none;
         padding: 20px 50px;
         height: 280px;
@@ -105,7 +105,7 @@ const StyleForSlide = {
         text-align: justify;
         white-space:pre-wrap;
       }
-      .prev, .next {
+      w-slide-viewtext .prev, w-slide-viewtext .next {
         cursor: pointer;
         position: absolute;
         top: 50%;
@@ -118,26 +118,26 @@ const StyleForSlide = {
         border-radius: 0 3px 3px 0;
         user-select: none;
       }      
-      .next {
+      w-slide-viewtext .next {
         position: absolute;
         right: 0;
         border-radius: 3px 0 0 3px;
       }
-      .prev {
+      w-slide-viewtext .prev {
         position: absolute;
         left: 0;
         border-radius: 3px 0 0 3px;
       }
-      .prev:hover, .next:hover {
+      w-slide-viewtext .prev:hover, w-slide-viewtext .next:hover {
         background-color: rgba(0,0,0,0.8);
         color: white;
       }      
-      .dot-container {
+      w-slide-viewtext .dot-container {
           text-align: center;
           padding: 20px;
           background: #ddd;
       }
-      .dot {
+     w-slide-viewtext .dot {
         cursor: pointer;
         height: 15px;
         width: 15px;
@@ -147,11 +147,11 @@ const StyleForSlide = {
         display: inline-block;
         transition: background-color 0.6s ease;
       }      
-      .active, .dot:hover {
+     w-slide-viewtext .active,w-slide-viewtext .dot:hover {
         background-color: #717171;
       }
       q {font-style: italic;}      
-      .author {color: cornflowerblue;}
+     w-slide-viewtext .author {color: cornflowerblue;}
     `]
 }
 customElements.define("w-slide-viewtext", WSlide);

@@ -396,8 +396,7 @@
     padding: 0px;
     margin: 0px;  
     padding-top: 0px;
-    padding-bottom: 30px;  
-    height: calc(100vh - 50px); 
-  
+    padding-bottom: 30px;  /*
+    height: calc(100vh - 50px); */  
 }
 
