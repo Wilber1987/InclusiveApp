@@ -15,7 +15,7 @@ class WSlide extends HTMLElement{
         this.showSlides(this.slideIndex);
     }
     DrawSlide = async () =>{    
-        let frag = {type: "div", props: {class: "slideshow-container"}, children:[StyleForSlide]}
+        let frag = {type: "div", props: {class: "slideshow-container"}, children:[WSlideStyle]}
         let dotContainer = {type: "div", props: {class: "dot-container"}, children:[]}
         //console.log( this.content);
         if (typeof this.content !== "string" ) {
@@ -87,71 +87,82 @@ class WSlide extends HTMLElement{
         dots[this.slideIndex-1].className += " active";
     }
 }
-const StyleForSlide = {
-    type: "style", props : {},
-    children: [` 
-    w-slide-viewtext .slideshow-container {
-        box-sizing: border-box;
-        position: relative;
-        background: #f1f1f1f1;
-        font-family: Verdana, sans-serif; margin:0;
-      }      
-      w-slide-viewtext .mySlides {
-        display: none;
-        padding: 20px 50px;
-        height: 280px;
-        overflow-y: auto;
-        overflow-x: hidden;
-        text-align: justify;
-        white-space:pre-wrap;
-      }
-      w-slide-viewtext .prev, w-slide-viewtext .next {
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        width: auto;
-        margin-top: -30px;
-        padding: 16px;
-        color: #888;
-        font-weight: bold;
-        font-size: 20px;
-        border-radius: 0 3px 3px 0;
-        user-select: none;
-      }      
-      w-slide-viewtext .next {
-        position: absolute;
-        right: 0;
-        border-radius: 3px 0 0 3px;
-      }
-      w-slide-viewtext .prev {
-        position: absolute;
-        left: 0;
-        border-radius: 3px 0 0 3px;
-      }
-      w-slide-viewtext .prev:hover, w-slide-viewtext .next:hover {
-        background-color: rgba(0,0,0,0.8);
-        color: white;
-      }      
-      w-slide-viewtext .dot-container {
-          text-align: center;
-          padding: 20px;
-          background: #ddd;
-      }
-     w-slide-viewtext .dot {
-        cursor: pointer;
-        height: 15px;
-        width: 15px;
-        margin: 0 2px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-        transition: background-color 0.6s ease;
-      }      
-     w-slide-viewtext .active,w-slide-viewtext .dot:hover {
-        background-color: #717171;
-      }
-      q {font-style: italic;}      
-     w-slide-viewtext .author {color: cornflowerblue;}
-    `]
+
+const WSlideStyle = {
+    type: "w-style",
+    props: {
+        ClassList: [
+            new WCssClass("w-slide-viewtext .slideshow-container",
+                {
+                    "box-sizing": "border-box",
+                    "position": "relative",
+                    "background": "#f1f1f1f1",
+                    "font-family": "Verdana, sans-serif",
+                     margin:0, 
+                }), 
+            new WCssClass("w-slide-viewtext .mySlides",
+                {
+                    "display" : "none",
+                    "padding" : "20px 50px",
+                    "height" : "280px",
+                    "overflow-y" : "auto",
+                    "overflow-x" : "hidden",
+                    "text-align" : "justify",
+                    "white-space" : "pre-wrap",
+                }),
+            new WCssClass("w-slide-viewtext .prev, w-slide-viewtext .next",
+                {
+                    "cursor": "pointer",
+                    "position": "absolute",
+                    "top": "50%",
+                    "width": "auto",
+                    "margin-top": "-30px",
+                    "padding": "16px",
+                    "color": "#888",
+                    "font-weight": "bold",
+                    "font-size": "20px",
+                    "border-radius": "0 3px 3px 0",
+                    "user-select": "none",
+                }),
+            new WCssClass("w-slide-viewtext .next",
+                {
+                    "position": "absolute",
+                    "right": "0",
+                    "border-radius": "3px 0 0 3px",
+                }),
+            new WCssClass("w-slide-viewtext .prev",
+                {
+                    "position": "absolute",
+                    "left": "0",
+                    "border-radius": "3px 0 0 3px",
+                }),
+            new WCssClass("w-slide-viewtext .prev:hover, w-slide-viewtext .next:hover",
+                {
+                    "background-color": "rgba(0,0,0,0.8)",
+                    "color": "white",
+                }),
+            new WCssClass("w-slide-viewtext .dot-container",
+                {
+                    "text-align": "center",
+                    "padding": "20px",
+                    "background": "#ddd",
+                }),
+            new WCssClass("w-slide-viewtext .dot",
+                {
+                    "cursor":" pointer",
+                    "height":" 15px",
+                    "width":" 15px",
+                    "margin":" 0 2px",
+                    "background-color":" #bbb",
+                    "border-radius":" 50%",
+                    "display":" inline-block",
+                    "transition":" background-color 0.6s ease",
+                }),
+            new WCssClass("w-slide-viewtext .active,w-slide-viewtext .dot:hover",
+                {
+                    "background-color":"#717171"
+                })
+        ]        
+    }   
 }
 customElements.define("w-slide-viewtext", WSlide);

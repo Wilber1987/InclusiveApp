@@ -10,7 +10,7 @@ class RadialReport{
                 children: ["Bar report Chart"]
             },
             { type: 'section', props: {id:"", class: ""} ,
-               children: [ this.StartReport() ]
+               children: [ this.StartReport(), {type: "w-style"} ]
             }     
         ]
     }    

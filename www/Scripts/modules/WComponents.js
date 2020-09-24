@@ -86,14 +86,12 @@ function createElement(Node) {
     }   
     const element = document.createElement(Node.type);
     if (Node.props) {
-        for (const prop in Node.props) {
-            if (typeof Node.props[prop] === "function" 
-                || typeof Node.props[prop] === "object" ) {
+        for (const prop in Node.props) {            
+            if (prop == "class") {
+                element.className = Node.props[prop];
+            } else {
                 element[prop] = Node.props[prop];
-            }else {
-                element[prop] = Node.props[prop];
-                element.setAttribute(prop,Node.props[prop])
-            }
+            } 
         }
     }
     if (Node.children) {
