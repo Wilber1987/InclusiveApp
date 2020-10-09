@@ -1,4 +1,4 @@
-class WStyledRender extends HTMLElement{
+class WStyledRender extends  HTMLElement{ 
     constructor(){
         super();  
     }
@@ -80,7 +80,7 @@ class CSSProps  {
     "flex-grow" = null;
     "flex-shrink" = null;
     "flex-wrap" = null;
-    "float" = "left" | "right" | "commit";
+    "float" = "left" || "right" || "commit";
     "font" = typeof "string";
     //"@font-face" = null;
     "font-family" = null;

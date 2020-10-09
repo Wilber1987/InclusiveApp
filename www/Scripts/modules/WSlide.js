@@ -87,7 +87,6 @@ class WSlide extends HTMLElement{
         dots[this.slideIndex-1].className += " active";
     }
 }
-
 const WSlideStyle = {
     type: "w-style",
     props: {
@@ -98,7 +97,7 @@ const WSlideStyle = {
                     "position": "relative",
                     "background": "#f1f1f1f1",
                     "font-family": "Verdana, sans-serif",
-                     margin:0, 
+                     margin:0 
                 }), 
             new WCssClass("w-slide-viewtext .mySlides",
                 {
