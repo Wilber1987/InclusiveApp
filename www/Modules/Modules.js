@@ -24,8 +24,9 @@ class Modules{
                 ]
             });
         }  else {            
-            this.events = { load:  
-                console.log("recuperando modulos....")               
+            this.events = { load:  ()=>{
+                    console.log("recuperando modulos....")   
+                }            
             }
         } 
         this.children.push(
@@ -66,12 +67,18 @@ class Modules{
         let Cards = [];
         modules.forEach(element => {
             Cards.push(
-                {type: "div", props:{ class: "cardForm" , x:["hola"],
+                {type: "div", props:{ class: "cardForm" ,
                 id:"card"+element.IdModules},
                 children:[
-                    {type: "label",props:{ class: "labelCard" },
-                            children:[element.Title]},
-                    {type: "p",props:{ class: "pCard"}, children:[element.Description]}, 
+                    {type: "div",props:{ class: "TitleCard", 
+                            style: `
+                                background: url(${element.image}) no-repeat;
+                                background-size: 100% 100%;
+                            ` },                            
+                            children:[ 
+                                {type: "div", props:{ class: "labelCard", innerText: element.Title}}
+                            ]},
+                   // {type: "p",props:{ class: "pCard"}, children:[element.Description]}, 
                     {type: "div", props:{id:element.id+"Container", class:"cardDivOptions"}, children:[
                         {type: "button", props:{class: "BtnSecundary", type: "button", onclick: async ()=>{
                             //MODELO
@@ -132,11 +139,9 @@ class Modules{
                 ]}
             );
         });
-
-        //DrawTable(modules, ConfigTable);
-       // console.log(Cards)
         return Cards;        
     }   
 }
 //export {Modules}
+
 

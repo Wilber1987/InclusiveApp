@@ -70,8 +70,8 @@ function CreateStringNode(string) {
     let node = document.createRange().createContextualFragment(string);
     return node;
 }
-function createElement(Node) {  
-   
+function createElement(Node) { 
+    //console.log(Node)
     if (typeof Node === "undefined") {
         return document.createTextNode("");
     }
@@ -97,15 +97,17 @@ function createElement(Node) {
     if (Node.children) {
         Node.children.map(createElement)
         .forEach(Child => element.appendChild(Child));
-    }     
-    if (Node.events) {
+    } 
+    //console.log(Node.events)    
+    if (typeof Node.events !== 'undefined' || Node.events != null) {
         for (const event in Node.events) {
-            if (!event.includes("Params")) {
-                element.addEventListener(event,
-                    //console.log(Node.props.pdfData),
-                    Node.events[event](Node.events[event+"Params"])
-               );                
-            }            
+            if (typeof Node.events[event] !== 'undefined'){
+                if (!event.includes("Params")) {
+                    element.addEventListener(event,
+                        Node.events[event](Node.events[event+"Params"])
+                   );                
+                } 
+            }                      
         }
     } 
     return element;
