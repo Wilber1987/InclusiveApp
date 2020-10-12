@@ -43,7 +43,7 @@ namespace WebApi.Controllers
             var MyModules = from M in Model.TblModulos
                             join MM in Model.TblMyModules on M equals MM.TblModulos
                             where MM.IdUser == IdUser
-                            select new { M.IdModules, M.Title, M.Description };
+                            select new { M.IdModules, M.Title, M.Description, M.image };
             return MyModules.ToList();
         }
        
@@ -56,7 +56,7 @@ namespace WebApi.Controllers
                           where !(from MM in Model.TblMyModules
                                   where MM.IdUser == IdUser
                                   select MM.IdModules).Contains(M.IdModules)
-                          select new { M.IdModules, M.Title, M.Description };
+                          select new { M.IdModules, M.Title, M.Description, M.image };
             return Modules.ToList();            
         }
         public Object PostModuleDetail(object Module)

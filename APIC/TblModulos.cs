@@ -25,6 +25,7 @@ namespace WebApi
         public string Description { get; set; }
         public string State { get; set; }
         public Nullable<int> IdUserCreator { get; set; }
+        public string image { get; set; }
     
         public virtual TblUsers TblUsers { get; set; }
         public virtual ICollection<TblMyModules> TblMyModules { get; set; }

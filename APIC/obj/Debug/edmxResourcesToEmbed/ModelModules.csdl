@@ -52,6 +52,7 @@
     <NavigationProperty Name="TblUsers" Relationship="Self.FK_TblModulos_TblUsers" FromRole="TblModulos" ToRole="TblUsers" />
     <NavigationProperty Name="TblMyModules" Relationship="Self.FK_TblMyModules_TblModulos" FromRole="TblModulos" ToRole="TblMyModules" />
     <NavigationProperty Name="TblSections" Relationship="Self.FK_TblSections_TblModulos" FromRole="TblModulos" ToRole="TblSections" />
+    <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="TblMyModules">
     <Key>

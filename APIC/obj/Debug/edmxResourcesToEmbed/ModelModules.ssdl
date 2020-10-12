@@ -44,6 +44,7 @@
     <Property Name="Description" Type="nvarchar" MaxLength="500" />
     <Property Name="State" Type="nvarchar" MaxLength="50" />
     <Property Name="IdUserCreator" Type="int" />
+    <Property Name="image" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="TblMyModules">
     <Key>

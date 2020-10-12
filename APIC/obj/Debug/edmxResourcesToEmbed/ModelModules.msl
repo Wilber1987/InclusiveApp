@@ -42,6 +42,7 @@
     <EntitySetMapping Name="TblModulos">
       <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblModulos">
         <MappingFragment StoreEntitySet="TblModulos">
+          <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="IdModules" ColumnName="IdModules" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Description" ColumnName="Description" />
