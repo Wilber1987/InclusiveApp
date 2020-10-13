@@ -80,47 +80,7 @@ class Modules{
                             ]},
                    // {type: "p",props:{ class: "pCard"}, children:[element.Description]}, 
                     {type: "div", props:{id:element.id+"Container", class:"cardDivOptions"}, children:[
-                        {type: "button", props:{class: "BtnSecundary", type: "button", onclick: async ()=>{
-                            //MODELO
-                            /*
-                            let ModuleModel = {
-                                id: "module1"+element.id,
-                                title: "Mi Modulo - " + element.id,
-                                sections: [
-                                    {
-                                        idSection:1,
-                                        titleSection: "Seccion1",
-                                        type: "video", contenido: "https://www.youtube.com/embed/VKWCFeE0XRk"
-                                    },
-                                    {
-                                        idSection:2,
-                                        titleSection: "Seccion2",
-                                        type: "pdf", 
-                                        contenido: "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf"//"./Media/video/Prueba.pdf"
-                                    },
-                                    {
-                                        idSection:3,
-                                        titleSection: "Seccion3",
-                                        type: "descripcion", contenido: "Hola mundo....."
-                                    },
-                                    {
-                                        idSection:4,
-                                        titleSection: "Seccion4",
-                                        type: "game", contenido: "./Media/games/game.js"
-                                    },
-                                    {
-                                        idSection:5,
-                                        titleSection: "Seccion5",
-                                        type: "game", contenido: "./Media/games/pokemon.js"
-                                    }, 
-                                    {
-                                        idSection:6,
-                                        titleSection: "Seccion6",
-                                        type: "flash", contenido: "./Media/games/Ley775.swf"
-                                    }
-                                ]
-                            }    */                        
-                            //inst.NavigateFunction("Modules", "./Modules/Modules.js");
+                        {type: "button", props:{class: "BtnSecundary", type: "button", onclick: async ()=>{  
                             if (view == true) {
                                 let MyModulesDetail = await PostRequest(Url_Path + 'api/module/PostModuleDetail', { IdModules: 1 }); 
                                 let ModuleModel = {

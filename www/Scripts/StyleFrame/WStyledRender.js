@@ -213,6 +213,9 @@ class CSSProps  {
     "word-wrap" = null;
     "writing-mode" = null;
     "z-index" = null;
+    "background" = null;
+    "background-color" = null;
+    "background-image" = null;
 }   
 
 class WCssClass {

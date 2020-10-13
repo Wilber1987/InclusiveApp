@@ -3,8 +3,7 @@
 class BarReport{    
     constructor(props){
         this.type = "div";
-        this.props = props; 
-        
+        this.props = props;         
         this.children= [
             { type: 'h1', props: {id:"", class: ""} ,
                 children: ["Bar report Chart"]
@@ -114,8 +113,65 @@ class BarReport{
         };
         //await import("../Scripts/Modules/WChartJSComponent.js"); 
         return createElement({type: 'w-colum-chart',  props : { data: CharConfig }});        
+    }    
+}
+class RadialReport{    
+    constructor(props){
+        this.type = "div";
+        this.props = props; 
+        
+        this.children= [
+            { type: 'h1', props: {id:"", class: ""} ,
+                children: ["Bar report Chart"]
+            },
+            { type: 'section', props: {id:"", class: ""} ,
+               children: [ this.StartReport(), {type: "w-style"} ]
+            }     
+        ]
+    }    
+    StartReport = () => {   
+        const DataSet = [
+            {cantidad: 20,time: 2020,},
+            {cantidad: 80,time: 2020, },
+            {cantidad: 90,time: 2020,}
+        ]; 
+        var CharConfig = {
+            ContainerName: "MyChart",
+            Title: "MyChart",
+            GroupLabelsData: [{ id_: "Fresa", Descripcion: "Severa" },
+                        { id_: "Naranja", Descripcion: "Moderada" },
+                        { id_: "Verde", Descripcion: "Sin sintomas" }],           
+            Datasets: DataSet,
+            Colors: ["#ff6699", "#ffbb99", "#adebad"],
+            ContainerSize: 400,
+            ColumnLabelDisplay: 0,
+            AttNameEval: "estado",
+            AttNameG1: "time",
+            AttNameG2: "categ2",
+            AttNameG3: "categ",
+            EvalValue: "cantidad",
+        };
+        return createElement({type: 'w-radial-chart',  props : { data: CharConfig }});        
     }
     
 }
+class ReportView{    
+    constructor(props){
+        this.type = "div";
+        this.props = props;
+        this.children= [
+            { type: 'h2', props: {id:"", class: ""} ,
+                children: ["Reports"]
+            },
+            { type: 'section', props: {id:"", class: ""} ,
+               children: [ 
+                    new BarReport({class: "", id: "BarReport"}), 
+                    new RadialReport({class: "", id: "RadialReport"}) 
+                ]
+            }     
+        ]
+    }
+}
+
 //export {BarReport}
 
