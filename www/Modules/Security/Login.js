@@ -38,7 +38,7 @@ class MyLogin{
         {type: "divControl", children:[
             { type: 'input', props: { class: "BtnPrimary", 
                 placeholder: "password", type: "button", value: "Ok", onclick: async ()=>{                         
-                        let response = await PostRequest(Url_Path + 'api/User/PostLogin', this.MyLoginData); 
+                        let response = await AjaxTools.PostRequest(Url_Path + 'api/User/PostLogin', this.MyLoginData); 
                         if(response == true){
                             localStorage.setItem("Username", this.MyLoginData.Username);
                             localStorage.setItem("Password", this.MyLoginData.Password);                           

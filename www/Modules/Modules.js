@@ -82,7 +82,7 @@ class Modules{
                     {type: "div", props:{id:element.id+"Container", class:"cardDivOptions"}, children:[
                         {type: "button", props:{class: "BtnSecundary", type: "button", onclick: async ()=>{  
                             if (view == true) {
-                                let MyModulesDetail = await PostRequest(Url_Path + 'api/module/PostModuleDetail', { IdModules: 1 }); 
+                                let MyModulesDetail = await AjaxTools.PostRequest(Url_Path + 'api/module/PostModuleDetail', { IdModules: 1 }); 
                                 let ModuleModel = {
                                     id: "module"+element.IdModules,
                                     title: element.Title,

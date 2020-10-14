@@ -3,7 +3,7 @@ function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
 }
-var Url_Path = "http://localhost:6601/"; //getAbsolutePath();
+var Url_Path = "https://165.98.8.46/"//"http://localhost:6601/"; //getAbsolutePath();
 
 const OnLoad =  async () => {     
     const BodyComponents = new MasterDomClass();

@@ -31,7 +31,7 @@ class LoginOptions{
                         Username: localStorage.getItem("Username"),
                         Password: localStorage.getItem("Password")
                     }
-                    let response = await PostRequest(Url_Path + 'api/User/PostLogin', login);                      
+                    let response = await AjaxTools.PostRequest(Url_Path + 'api/User/PostLogin', login);                      
                     if(response == true){
                          Navegando();                         
                     }

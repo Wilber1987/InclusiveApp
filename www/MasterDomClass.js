@@ -81,8 +81,8 @@ class MasterDomClass extends DomComponent{
         super();         
         this.MainComponent = new Loading({id:"Load", class:"LoadingPage DivContainer"}, async ()=>{ 
             //TAKE MODULESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS           
-            let MyModules = await PostRequest(Url_Path + 'api/module/PostMyModules', { IdUsers: 1 });         
-            let OModules = await PostRequest(Url_Path + 'api/module/PostModules', { IdUsers: 1 });            
+            let MyModules = await AjaxTools.PostRequest(Url_Path + 'api/module/PostMyModules', { IdUsers: 1 });         
+            let OModules = await AjaxTools.PostRequest(Url_Path + 'api/module/PostModules', { IdUsers: 1 });            
             this.NavigateFunction("Modules",new Modules({
                 class: "DivContainer", id: "Modules", MyModules: MyModules,   modules: OModules
             }));           

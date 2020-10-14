@@ -85,7 +85,7 @@ class MyRegister{
                             control2.style.border = "red solid 2px";
                             return;
                         }                 
-                        let response = await PostRequest(Url_Path + 'api/User/PostRegister', this.MyLoginData); 
+                        let response = await AjaxTools.PostRequest(Url_Path + 'api/User/PostRegister', this.MyLoginData); 
                         if(response == true){
                             localStorage.setItem("Username", this.MyLoginData.Username);
                             localStorage.setItem("Password", this.MyLoginData.Password);                           
