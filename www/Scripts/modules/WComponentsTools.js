@@ -60,21 +60,20 @@ class AjaxTools {
       else {
         response = await response.json();
         localStorage.setItem(Url, JSON.stringify(response));
-        console.log(response);
         return response;
-      }
+      }  
     } catch (error) {
       if (error == "TypeError: Failed to fetch") {
         return this.LocalData(Url);
       }
     }
   }
-  static GetRequest = async (Url) => {
+  static GetRequest = async (Url) => {    
     try {
       let response = await fetch(Url, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
-      });
+      }); 
       if (response.status == 404 || response.status == 500) {
         console.log("ocurrio un error: " + response.status);
         if (typeof responseLocal !== "undefined" && typeof responseLocal !== "null" && responseLocal != "") {
