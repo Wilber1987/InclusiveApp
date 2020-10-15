@@ -58,7 +58,7 @@ class AjaxTools {
         }
       }
       else {
-        response = await response.json();
+        response = response.json();
         localStorage.setItem(Url, JSON.stringify(response));
         return response;
       }  
