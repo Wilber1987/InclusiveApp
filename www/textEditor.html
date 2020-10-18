@@ -8,9 +8,10 @@
 </head>
 
 <body>
-   
+
     <input type="button" value="N2" onclick="myFunction()">
-    <div id="editor" style="height: 400px; padding: 30px; border: solid 1px #000;" contenteditable="">123456789F<div>123456789G</div>
+    <div id="editor" style="height: 400px; padding: 30px; border: solid 1px #000;" contenteditable="">123456789F
+        <div>123456789G</div>
         <div>123456789A</div>
         <div>123456789B</div>
         <div>123456789C</div>
@@ -20,12 +21,14 @@
     <div id="result"></div>
     <script>
         document.designMode = "on";
+
         function myFunction(event) {
-           // if (event.keyCode == 16) {
-                // Execute command if user presses the SHIFT button:
-                document.execCommand("bold");
-           // }
+            // if (event.keyCode == 16) {
+            // Execute command if user presses the SHIFT button:
+            document.execCommand("bold");
+            // }
         }
+
         function proSele(texto, inicio_selección, fin_selección) {
             var fin_texto = texto.length;
             //calcleng(texto, inicio_selección)
@@ -37,15 +40,18 @@
             //calcleng(centro)
             return inicio + centro + fin;
         }
+
         function CreateStringNode(string) {
             let node = document.createRange().createContextualFragment(string);
             return node;
         }
+
         function calcleng(text, inicio_selección) {
             var inicio = text.slice(0, inicio_selección);
             nodes = CreateStringNode(inicio)
             console.log(nodes);
         }
+
         function select_html() {
             var sel = saveSelection(editor);
             //console.log([editor])
@@ -54,7 +60,7 @@
             var fin = sel.end;
             result.innerHTML = proSele(texto, inicio, fin)
         }
-        saveSelection = function (containerEl) {
+        saveSelection = function(containerEl) {
             var range = window.getSelection().getRangeAt(0);
             var preSelectionRange = range.cloneRange();
             preSelectionRange.selectNodeContents(containerEl);
@@ -67,32 +73,35 @@
             console.log("nodeLengst:", length)
             return {
                 start: start + length,
-                end: start + range.toString().length + length 
+                end: start + range.toString().length + length
             }
         };
+
         function DetectNodeLength(htmlE, range) {
             console.log(range.toString().length)
             console.log(range)
             var charIndex = 0;
-            var nodeStack = [htmlE], node, foundStart = false, stop = false;
+            var nodeStack = [htmlE],
+                node, foundStart = false,
+                stop = false;
             console.log(htmlE.childNodes);
             let nodes = htmlE.childNodes;
             let FirstNodeIndex = null;
             for (let index = 0; index < nodes.length; index++) {
                 const node = nodes[index];
-               // console.log("nod type ",node, node.nodeType) 
+                // console.log("nod type ",node, node.nodeType) 
                 var regex = /[^a-z0-9\x20]/i;
                 //alert(regex.test(strsym));
                 //alert(regex.test(strAlphaNum));
                 if (FirstNodeIndex == null) {
                     if (node.nodeType == 3) {
-                        var j = regex.test(node.data.toString())                                                
+                        var j = regex.test(node.data.toString())
                         if (j) {
-                            console.log("node to string",node.data.toString(), j);
-                           // console.log("node data" , node.textContent);
+                            console.log("node to string", node.data.toString(), j);
+                            // console.log("node data" , node.textContent);
                             //console.log("nod 3",node.length)  
-                            charIndex = charIndex +node.length;  
-                        }                                                                                     
+                            charIndex = charIndex + node.length;
+                        }
                     } else {
                         //console.log(node)
                         var textNode = `<${node.tagName}></${node.tagName}>`;
@@ -100,19 +109,19 @@
                         var nextCharIndex = charIndex + textNode.length;
                         charIndex = nextCharIndex;
                         // var i = node.childNodes.length;                   
-                    }                     
-                }  
-                console.log("node",node.data,"start", range.startContainer.data);              
-                if (node.data === range.startContainer.data) {                    
-                   console.log("inicio", node, index)
-                   FirstNodeIndex = index; 
-                   break;                 
-                }   
+                    }
+                }
+                console.log("node", node.data, "start", range.startContainer.data);
+                if (node.data === range.startContainer.data) {
+                    console.log("inicio", node, index)
+                    FirstNodeIndex = index;
+                    break;
+                }
                 // if (node.innerHTML === range.endContainer.data) {                    
                 //    //console.log("fin")
                 //    break;
                 // }                
-            }           
+            }
             // while (!stop && (node = nodeStack.pop())) {
             //     if (node.nodeType == 3) {
             //         console.log("nod 3",node)
@@ -143,7 +152,6 @@
             //console.log(charIndex) 
             return charIndex;
         }
-
     </script>
 
 

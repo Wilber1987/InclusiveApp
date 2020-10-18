@@ -1,31 +1,35 @@
-class WFormView extends HTMLElement{
-    constructor(props){
-        super();      
-        this.slideIndex = 1;     
+class WFormView extends HTMLElement {
+    constructor(props) {
+        super();
+        this.slideIndex = 1;
     }
-    attributeChangedCallBack(){
+    attributeChangedCallBack() {
         this.DrawChart();
     }
-    connectedCallback(){           
-        if (this.innerHTML != "") {            
+    connectedCallback() {
+        if (this.innerHTML != "") {
             return;
         }
-        this.DrawForm();        
+        this.DrawForm();
     }
-    DrawForm = async () =>{         
-        const url =  Url_Path + 'api/Form/GetForm?idform=' + this.idform[0];
-        this.data = await GetRequest(url);        
-        let frag = {type: "div", props: {class: "slideshow-container"}, children:[FormStyle]}
-        let dotContainer = {type: "div", props: {class: "dot-container"}, children:[]}
+    DrawForm = async() => {
+        const url = Url_Path + 'api/Form/GetForm?idform=' + this.idform[0];
+        this.data = await AjaxTools.GetRequest(url);
+        let frag = { type: "div", props: { class: "slideshow-container" }, children: [FormStyle] }
+        let dotContainer = { type: "div", props: { class: "dot-container" }, children: [] }
         this.data[1].forEach((preg, index = 1) => {
             let pregSection = {
-                type: "div", props: {id:`section${preg.IdQuestion}`, class: "mySlides"}, children:[
-                    {type:"h4", children:[preg.Description]}
+                type: "div",
+                props: { id: `section${preg.IdQuestion}`, class: "mySlides" },
+                children: [
+                    { type: "h4", children: [preg.Description] }
                 ]
             }
             let OptionSections = {
-                type: "div", props: {class: "sectionResp"}, children:[]
-            }            
+                type: "div",
+                props: { class: "sectionResp" },
+                children: []
+            }
             const pregsOptions = this.data[2].filter(
                 p => p.IdQuestion == preg.IdQuestion);
             let typeOption = preg.pregType;
@@ -34,41 +38,55 @@ class WFormView extends HTMLElement{
             }
             //-----------------------------------
             //console.log(this.data[2]);
-           // console.log(pregsOptions);
-            pregsOptions.forEach(pregOption => {                
-                OptionSections.children.push(
-                    {type: "div", props: {class: "divOption"}, children:[
-                        {type: "label", props: {
-                            for: `preg${preg.IdQuestion}_${pregOption.IdQuestionOption}`
-                        },children:[pregOption.OptionDesc]},
-                        {type: "input", props: {
-                            type: typeOption, 
-                            id: `preg${preg.IdQuestion}_${pregOption.IdQuestionOption}`,
-                            name:  `preg${preg.IdQuestion}`,
-                            value: pregOption.Value
-                        }}
-                    ]}
-                )
+            // console.log(pregsOptions);
+            pregsOptions.forEach(pregOption => {
+                OptionSections.children.push({
+                    type: "div",
+                    props: { class: "divOption" },
+                    children: [{
+                            type: "label",
+                            props: {
+                                for: `preg${preg.IdQuestion}_${pregOption.IdQuestionOption}`
+                            },
+                            children: [pregOption.OptionDesc]
+                        },
+                        {
+                            type: "input",
+                            props: {
+                                type: typeOption,
+                                id: `preg${preg.IdQuestion}_${pregOption.IdQuestionOption}`,
+                                name: `preg${preg.IdQuestion}`,
+                                value: pregOption.Value
+                            }
+                        }
+                    ]
+                })
             });
             //-------------------------------------
             pregSection.children.push(OptionSections);
             frag.children.push(pregSection);
 
-            dotContainer.children.push(
-                {type: "span", props: {class: "dot", onclick:()=>{
-                    this.currentSlide(index);
-                }}}
-            );
+            dotContainer.children.push({
+                type: "span",
+                props: {
+                    class: "dot",
+                    onclick: () => {
+                        this.currentSlide(index);
+                    }
+                }
+            });
             index++;
-        }); 
-        frag.children.push(
-            {type: "a", props:{class:"prev", onclick : ()=>{ this.plusSlides(-1); }},
-            children: ["❮"]}
-        );  
-        frag.children.push(
-            {type: "a", props:{class:"next", onclick : ()=>{ this.plusSlides(1);}}, 
-            children: ["❯"]}
-        ); 
+        });
+        frag.children.push({
+            type: "a",
+            props: { class: "prev", onclick: () => { this.plusSlides(-1); } },
+            children: ["❮"]
+        });
+        frag.children.push({
+            type: "a",
+            props: { class: "next", onclick: () => { this.plusSlides(1); } },
+            children: ["❯"]
+        });
         this.append(createElement(frag), createElement(dotContainer));
         this.showSlides(this.slideIndex);
     }
@@ -78,26 +96,27 @@ class WFormView extends HTMLElement{
     currentSlide(n) {
         this.showSlides(this.slideIndex = n);
     }
-    showSlides = (n)=>{
+    showSlides = (n) => {
         var i;
         var slides = this.getElementsByClassName("mySlides");
         var dots = this.getElementsByClassName("dot");
-        if (n > slides.length) {this.slideIndex = 1}    
-        if (n < 1) {this.slideIndex = slides.length}
+        if (n > slides.length) { this.slideIndex = 1 }
+        if (n < 1) { this.slideIndex = slides.length }
         for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
+            slides[i].style.display = "none";
         }
         for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", "");
         }
-        slides[this.slideIndex-1].style.display = "block";  
-        dots[this.slideIndex-1].className += " active";
+        slides[this.slideIndex - 1].style.display = "block";
+        dots[this.slideIndex - 1].className += " active";
     }
 
 }
 
 const FormStyle = {
-    type: "style", props : {},
+    type: "style",
+    props: {},
     children: [`     
         w-form-view{
             display: block;
