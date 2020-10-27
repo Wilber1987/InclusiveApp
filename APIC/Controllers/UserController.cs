@@ -28,6 +28,18 @@ namespace WebApi.Controllers
                 return false;
             }            
         }
+        
+        public Object PostTakeSeason(object User)
+        {
+            var JUser = JsonConvert.DeserializeObject<TblUsers>(User.ToString());
+            INCLUSIVE_BDEntities Model = new INCLUSIVE_BDEntities();
+            var Autenticate = from M in Model.TblUsers
+                              where M.Username == JUser.Username
+                                  && M.Password == JUser.Password
+                                  && M.State == "act"
+                              select new { M.IdUsers, M.Username };
+            return Autenticate.ToList()[0];
+        }
         public Object PostRegister(object User)
         {
             var JUser = JsonConvert.DeserializeObject<TblUsers>(User.ToString());
@@ -41,7 +53,7 @@ namespace WebApi.Controllers
             }
             catch (Exception)
             {              
-                return true;
+                return false;
             }
         }
 

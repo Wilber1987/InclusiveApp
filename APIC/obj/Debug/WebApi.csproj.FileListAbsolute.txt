@@ -172,7 +172,6 @@ C:\inetpub\wwwroot\WebApi\bin\es\System.Net.Http.Formatting.resources.dll
 C:\inetpub\wwwroot\WebApi\bin\es\System.Web.Http.resources.dll
 C:\inetpub\wwwroot\WebApi\bin\es\System.Web.Http.WebHost.resources.dll
 C:\inetpub\wwwroot\WebApi\obj\Debug\WebApi.csprojAssemblyReference.cache
-C:\inetpub\wwwroot\WebApi\obj\Debug\WebApi.csproj.CoreCompileInputs.cache
 C:\inetpub\wwwroot\WebApi\obj\Debug\WebApi.csproj.CopyComplete
 C:\inetpub\wwwroot\WebApi\obj\Debug\WebApi.dll
 C:\inetpub\wwwroot\WebApi\obj\Debug\WebApi.pdb

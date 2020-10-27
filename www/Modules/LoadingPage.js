@@ -33,7 +33,9 @@ class LoginOptions{
                     }
                     let response = await AjaxTools.PostRequest(Url_Path + 'api/User/PostLogin', login);                      
                     if(response == true){
-                         Navegando();                         
+                        UserSeason = await AjaxTools.PostRequest(Url_Path + 'api/User/PostTakeSeason', login);
+                        console.log(UserSeason)
+                        Navegando();                         
                     }
                     else{   
                         document.getElementById("IconSection").style.width = "200px";

@@ -69,6 +69,14 @@ namespace WebApi.Controllers
                           where S.IdModules == data.IdModules
                           select  new { S.IdSection, S.Title ,S.UrlContent , Type =  CS.Description};
             return Modules.ToList();
-        }        
+        }  
+        public Object PostAddMyNewModule(object Module)
+        {
+            var data = JsonConvert.DeserializeObject<TblMyModules>(Module.ToString());
+            INCLUSIVE_BDEntities Model = new INCLUSIVE_BDEntities();
+            Model.TblMyModules.Add(data);            
+            Model.SaveChanges();            
+            return true;           
+        }
     }
 }

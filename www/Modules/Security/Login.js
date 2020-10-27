@@ -40,9 +40,11 @@ class MyLogin{
                 placeholder: "password", type: "button", value: "Ok", onclick: async ()=>{                         
                         let response = await AjaxTools.PostRequest(Url_Path + 'api/User/PostLogin', this.MyLoginData);                        
                         if(response == true){
+                            UserSeason = await AjaxTools.PostRequest(Url_Path + 'api/User/PostTakeSeason', this.MyLoginData);
+                            console.log(UserSeason)
                             localStorage.setItem("Username", this.MyLoginData.Username);
                             localStorage.setItem("Password", this.MyLoginData.Password);                           
-                            this.Navegando();
+                            //this.Navegando();
                         }
                         else{                       
                             console.log("error...");

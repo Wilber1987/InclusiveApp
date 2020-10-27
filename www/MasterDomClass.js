@@ -1,13 +1,13 @@
 //import { createElement } from "./Scripts/Modules/WComponents.js";
 //import { Loading } from "./Modules/LoadingPage.js";
 class DomComponent {
-    constructor(){
-        this.NavForm = [];   
+    constructor(ContainerName = "ContainerNavigate"){
+        this.NavForm = [];
+        this.ContainerName = ContainerName;   
     }
     type = "form";
-    props = { class: "MyForm" };   
-    NavigateFunction =  async (IdComponent, ComponentsInstance, ContainerName = "ContainerNavigate" )=>{ 
-       //console.log(this.NavForm);
+    props = { class: "MyForm", id: "x" };   
+    NavigateFunction =  async (IdComponent, ComponentsInstance, ContainerName = this.ContainerName )=>{         
         const ContainerNavigate = document.querySelector("#"+ContainerName);
         let Nodes = ContainerNavigate.querySelectorAll(".DivContainer");        
         Nodes.forEach((node) => {
@@ -22,10 +22,18 @@ class DomComponent {
             if (typeof this.NavForm[IdComponent] != "undefined") {
                 ContainerNavigate.append(this.NavForm[IdComponent]);                            
                 return;
-            }        
-            ContainerNavigate.append(createElement(ComponentsInstance));
+            }      
+            this.NavForm[IdComponent] = createElement(ComponentsInstance);  
+            ContainerNavigate.append(this.NavForm[IdComponent]);            
             return;
-        }   
+        } else {
+            if (typeof this.NavForm[IdComponent] == "undefined") {               
+                ContainerNavigate.removeChild(document.getElementById(IdComponent))
+                this.NavForm[IdComponent] = createElement(ComponentsInstance);  
+                ContainerNavigate.append(this.NavForm[IdComponent]);            
+                return;
+            }  
+        }  
     } 
     ModalNavigateFunction =  async (IdComponent, ComponentsInstance, props = {}, ContainerName = "ContainerNavigate" )=>{ 
         const ContainerNavigate = document.querySelector("#"+ContainerName);        
@@ -81,9 +89,9 @@ class MasterDomClass extends DomComponent{
         super();         
         this.MainComponent = new Loading({id:"Load", class:"LoadingPage DivContainer"}, async ()=>{ 
             //TAKE MODULESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS           
-            let MyModules = await AjaxTools.PostRequest(Url_Path + 'api/module/PostMyModules', { IdUsers: 1 });         
-            let OModules = await AjaxTools.PostRequest(Url_Path + 'api/module/PostModules', { IdUsers: 1 });            
-            this.NavigateFunction("Modules",new Modules({
+            let MyModules = await AjaxTools.PostRequest(Url_Path + 'api/module/PostMyModules', { IdUsers: UserSeason.IdUsers });         
+            let OModules = await AjaxTools.PostRequest(Url_Path + 'api/module/PostModules', { IdUsers: UserSeason.IdUsers });            
+            instModules.NavigateFunction("Modules",new Modules({
                 class: "DivContainer", id: "Modules", MyModules: MyModules,   modules: OModules
             }));           
         });
@@ -101,11 +109,7 @@ class MasterDomClass extends DomComponent{
                 },
                 { type: 'section', props: {id:"Container"}}
             ] },    
-            new FooterNavigator(
-                {class: "FooterNav", 
-                id: "FooterNav", 
-                style: ""}
-            )     
+            instModules    
         ]
     } 
 }
@@ -141,26 +145,26 @@ class MyNavigator extends DomComponent{
         children: [            
             {type: "li", props:{
                 onclick: ()=>{
-                   // this.NavigateFunction("Modules",new Modules({class: "DivContainer", id: "Modules", modules: this.modules}));
-                    //this.NavigateFunction("MyLogin", "./Modules/Security/Login.js");
+                   // instModules.NavigateFunction("Modules",new Modules({class: "DivContainer", id: "Modules", modules: this.modules}));
+                    //instModules.NavigateFunction("MyLogin", "./Modules/Security/Login.js");
                     this._DispalNav("MyLateralNav", "SlideLeft");
                 }
             }, children: [{type:"a", props:{href:"#"}, children: ["Perfil"]}]},
             {type: "li", props:{
                 onclick:  ()=>{
-                   // this.NavigateFunction("BarReport", new ReportView({class: "DivContainer", id: "ReportView"}));  
+                   // instModules.NavigateFunction("BarReport", new ReportView({class: "DivContainer", id: "ReportView"}));  
                     this._DispalNav("MyLateralNav", "SlideLeft");                   
                 }
             }, children: [{type:"a", props:{href:"#"}, children: ["Notificaciones"]}]},
             {type: "li", props:{
                 onclick: ()=>{
-                   // this.NavigateFunction("RadialReport",new RadialReport({class: "DivContainer", id: "RadialReport"}));  
+                   // instModules.NavigateFunction("RadialReport",new RadialReport({class: "DivContainer", id: "RadialReport"}));  
                     this._DispalNav("MyLateralNav", "SlideLeft");          
                 }
             }, children: [{type:"a", props:{href:"#"}, children: ["Mensajes"]}]},
             {type: "li", props:{
                 onclick: ()=>{
-                   // this.NavigateFunction("MultiSelectControls", new MultiSelectControls({class: "DivContainer", id: "MultiSelectControls"}));
+                   // instModules.NavigateFunction("MultiSelectControls", new MultiSelectControls({class: "DivContainer", id: "MultiSelectControls"}));
                     this._DispalNav("MyLateralNav", "SlideLeft");
                 }
             }, children: [{type:"a", props:{href:"#"}, children: ["Cerrar Sesión"]}]},
@@ -177,7 +181,7 @@ class FooterNavigator extends DomComponent{
         children: [            
             {type: "li", props:{
                 onclick: ()=>{
-                    this.NavigateFunction("Modules",new Modules({class: "DivContainer", id: "Modules", modules: this.modules}));                 
+                    instModules.NavigateFunction("Modules",new Modules({class: "DivContainer", id: "Modules", modules: this.modules}));                 
                 }
             }, children: [{type:"button", props:{ type: "button", 
                 style: `
@@ -199,7 +203,7 @@ class FooterNavigator extends DomComponent{
                             date: "2020-01-01"
                         }
                     ];
-                    this.NavigateFunction("ForosView",new ForosView({class: "DivContainer DivSection", id: "ForosView", Foros: Foros}));                    
+                    instModules.NavigateFunction("ForosView",new ForosView({class: "DivContainer DivSection", id: "ForosView", Foros: Foros}));                    
                 }
             }, children: [{type:"button", props:{ type: "button",
             style: `
@@ -209,7 +213,7 @@ class FooterNavigator extends DomComponent{
         }, children: [""]}]},  
             {type: "li", props:{
                 onclick:  ()=>{                    
-                    this.NavigateFunction("ReportView", new ReportView({class: "DivContainer DivSection", id: "ReportView"})); 
+                    instModules.NavigateFunction("ReportView", new ReportView({class: "DivContainer DivSection", id: "ReportView"})); 
                 }
             }, children: [{type:"button", props:{ type: "button", 
                 style: `

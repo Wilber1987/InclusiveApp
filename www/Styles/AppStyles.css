@@ -21,6 +21,13 @@ header {
   align-items: center;
   font-size: 20px;
 }
+.Message{
+  display: block;
+  text-align: center;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.4);
+}
 /* header::after{
     font-family: Arial, Helvetica, sans-serif;
     content: "MyInclusiveApp";

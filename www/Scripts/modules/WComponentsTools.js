@@ -91,7 +91,7 @@ class AjaxTools {
             }
         }
     }
-    LocalData = (Url) => {
+    static LocalData = (Url) => {
         let responseLocal = localStorage.getItem(Url);
         return JSON.parse(responseLocal);
     }
