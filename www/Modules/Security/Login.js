@@ -44,7 +44,7 @@ class MyLogin{
                             console.log(UserSeason)
                             localStorage.setItem("Username", this.MyLoginData.Username);
                             localStorage.setItem("Password", this.MyLoginData.Password);                           
-                            //this.Navegando();
+                            this.Navegando();
                         }
                         else{                       
                             console.log("error...");
