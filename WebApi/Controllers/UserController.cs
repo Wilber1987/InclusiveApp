@@ -37,7 +37,7 @@ namespace WebApi.Controllers
                               where M.Username == JUser.Username
                                   && M.Password == JUser.Password
                                   && M.State == "act"
-                              select new { M.IdUsers, M.Username };
+                              select new { M.IdUsers, M.Username, M.Mail, M.Photo, M.LastName, M.Name};
             return Autenticate.ToList()[0];
         }
         public Object PostRegister(object User)

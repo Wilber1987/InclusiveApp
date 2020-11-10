@@ -144,27 +144,25 @@ class MyNavigator extends DomComponent{
     children = [{type: "ul",
         children: [            
             {type: "li", props:{
-                onclick: ()=>{
-                   // instModules.NavigateFunction("Modules",new Modules({class: "DivContainer", id: "Modules", modules: this.modules}));
-                    //instModules.NavigateFunction("MyLogin", "./Modules/Security/Login.js");
+                onclick: ()=>{    
+                    instModules.NavigateFunction("MyPerfil",new MyPerfil({
+                        class: "DivContainer perfilContainer", id: "MyPerfil"
+                    }, UserSeason));              
                     this._DispalNav("MyLateralNav", "SlideLeft");
                 }
             }, children: [{type:"a", props:{href:"#"}, children: ["Perfil"]}]},
             {type: "li", props:{
-                onclick:  ()=>{
-                   // instModules.NavigateFunction("BarReport", new ReportView({class: "DivContainer", id: "ReportView"}));  
+                onclick:  ()=>{                  
                     this._DispalNav("MyLateralNav", "SlideLeft");                   
                 }
             }, children: [{type:"a", props:{href:"#"}, children: ["Notificaciones"]}]},
             {type: "li", props:{
                 onclick: ()=>{
-                   // instModules.NavigateFunction("RadialReport",new RadialReport({class: "DivContainer", id: "RadialReport"}));  
                     this._DispalNav("MyLateralNav", "SlideLeft");          
                 }
             }, children: [{type:"a", props:{href:"#"}, children: ["Mensajes"]}]},
             {type: "li", props:{
                 onclick: ()=>{
-                   // instModules.NavigateFunction("MultiSelectControls", new MultiSelectControls({class: "DivContainer", id: "MultiSelectControls"}));
                     this._DispalNav("MyLateralNav", "SlideLeft");
                 }
             }, children: [{type:"a", props:{href:"#"}, children: ["Cerrar Sesión"]}]},

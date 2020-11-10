@@ -28,6 +28,8 @@ namespace WebApi
         public string Password { get; set; }
         public string State { get; set; }
         public string Mail { get; set; }
+        public string LastName { get; set; }
+        public string Photo { get; set; }
     
         public virtual ICollection<TblModulos> TblModulos { get; set; }
         public virtual ICollection<TblMyModules> TblMyModules { get; set; }

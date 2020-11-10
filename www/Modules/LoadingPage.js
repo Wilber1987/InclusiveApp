@@ -33,8 +33,7 @@ class LoginOptions{
                     }
                     let response = await AjaxTools.PostRequest(Url_Path + 'api/User/PostLogin', login);                      
                     if(response == true){
-                        UserSeason = await AjaxTools.PostRequest(Url_Path + 'api/User/PostTakeSeason', login);
-                        console.log(UserSeason)
+                        UserSeason = await AjaxTools.PostRequest(Url_Path + 'api/User/PostTakeSeason', login);                     
                         Navegando();                         
                     }
                     else{   
@@ -50,7 +49,7 @@ class LoginOptions{
             { type: 'button', props: { class: "BtnPrimary", type:"button", onclick:async ()=>{
                     document.getElementById("IconSection").style.width = "200px";
                     document.getElementById("IconSection").style.height = "120px";                    
-                    this.props.inst.NavigateFunction("MyRegister", new MyRegister({class: "DivContainer", id: "MyRegister"},  Navegando) , "LoginForm");                                      
+                    this.props.inst.NavigateFunction("MyRegisterOBJ", new MyRegister({class: "DivContainer", id: "MyRegisterOBJ"},  Navegando) , "LoginForm");                                      
                 }
             } ,children: ["Register"]},
         ] 

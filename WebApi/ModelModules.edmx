@@ -114,6 +114,8 @@
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="State" Type="nvarchar" MaxLength="50" />
           <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="TblUsersRol">
           <Key>
@@ -511,6 +513,8 @@
           <NavigationProperty Name="TblUsersRol" Relationship="Self.FK_TblUsersRol_TblUsers" FromRole="TblUsers" ToRole="TblUsersRol" />
           <NavigationProperty Name="UsersResponse" Relationship="Self.FK_UsersResponse_TblUsers" FromRole="TblUsers" ToRole="UsersResponse" />
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TblUsersRol">
           <Key>
@@ -892,6 +896,8 @@
           <EntitySetMapping Name="TblUsers">
             <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblUsers">
               <MappingFragment StoreEntitySet="TblUsers">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="IdUsers" ColumnName="IdUsers" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

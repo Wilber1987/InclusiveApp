@@ -1,5 +1,5 @@
 function DisplayAcordeon(value, SectionId, size = null) {
-    console.log(value)
+
     if (size == null) {
         size = "500px";
     }
@@ -58,7 +58,7 @@ class AjaxTools {
                 }
             } else {
                 response = await response.json();
-                console.log(response)
+                
                 localStorage.setItem(Url, JSON.stringify(response));
                 return response;
             }
