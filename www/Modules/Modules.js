@@ -108,7 +108,7 @@ class Modules {
                             ]
                         },
                         {
-                            type: "div", props: { id: element.id + "Container", class: "cardDivOptions" }, children: [
+                            type: "div", props: { id: "Container" + element.IdModules , class: "cardDivOptions" }, children: [
                                 {
                                     type: "button", props: {
                                         class: "BtnSecundary", type: "button", onclick: async()=>{
@@ -132,10 +132,11 @@ class Modules {
             let ModuleModel = {
                 id: "module" + element.IdModules,
                 title: element.Title,
-                sections: MyModulesDetail
+                sections: MyModulesDetail,
+                Container: "Container" + element.IdModules
             };
-            instModules.ModalNavigateFunction(element.id + "Container",
-                new ModulesView(ModuleModel), { class: "LoginForm" }, element.id + "Container"
+            instModules.ModalNavigateFunction("module" + element.IdModules,
+                new ModulesView(ModuleModel), { class: "LoginForm" }, "Container" + element.IdModules
             );
         } else {
             //agregar

@@ -8,7 +8,7 @@ class ModulesView{
             let InputClose = { 
                 type:'button', props:{class: 'Btn', type:"button", onclick: ()=>{                      
                         instModules.ModalNavigateFunction( data.id,this,
-                          {class: "LoginForm"}, data.id
+                          {class: "LoginForm"}, data.Container
                         );
                     } 
                 },
