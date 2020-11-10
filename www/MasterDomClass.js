@@ -152,18 +152,20 @@ class MyNavigator extends DomComponent{
                 }
             }, children: [{type:"a", props:{href:"#"}, children: ["Perfil"]}]},
             {type: "li", props:{
-                onclick:  ()=>{                  
+                onclick: async ()=>{ 
+                    const Notifications = await AjaxTools.PostRequest(Url_Path + 'api/Notifications/PostTakeNotifications', UserSeason);                             
+                    instModules.NavigateFunction("MyNotifView",new MyNotifications({
+                        class: "DivContainer perfilContainer", id: "MyNotifView"
+                    }, Notifications));  
                     this._DispalNav("MyLateralNav", "SlideLeft");                   
                 }
             }, children: [{type:"a", props:{href:"#"}, children: ["Notificaciones"]}]},
-            {type: "li", props:{
-                onclick: ()=>{
-                    this._DispalNav("MyLateralNav", "SlideLeft");          
-                }
-            }, children: [{type:"a", props:{href:"#"}, children: ["Mensajes"]}]},
+           
             {type: "li", props:{
                 onclick: ()=>{
                     this._DispalNav("MyLateralNav", "SlideLeft");
+                    localStorage.clear();
+                    window.location =  "./index.html";
                 }
             }, children: [{type:"a", props:{href:"#"}, children: ["Cerrar Sesión"]}]},
         ]    

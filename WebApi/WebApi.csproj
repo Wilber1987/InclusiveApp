@@ -144,6 +144,7 @@
     </Compile>
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
+    <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -177,6 +178,9 @@
       <DependentUpon>ModelModules.tt</DependentUpon>
     </Compile>
     <Compile Include="TblMyModules.cs">
+      <DependentUpon>ModelModules.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblNotifications.cs">
       <DependentUpon>ModelModules.tt</DependentUpon>
     </Compile>
     <Compile Include="TblPermission.cs">

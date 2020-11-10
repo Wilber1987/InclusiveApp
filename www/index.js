@@ -3,8 +3,8 @@ function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
 }
-//var Url_Path = "http://localhost:6601/";
-var Url_Path = "https://165.98.8.46/";
+var Url_Path = "http://localhost:6601/";
+//var Url_Path = "https://165.98.8.46/";
 var UserSeason;
 const instModules = new FooterNavigator({
     class: "FooterNav",
