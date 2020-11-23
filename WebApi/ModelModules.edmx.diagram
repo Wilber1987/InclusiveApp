@@ -33,8 +33,6 @@
         <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblUsersRol_TblRol" ManuallyRouted="false" />
         <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblUsersRol_TblUsers" ManuallyRouted="false" />
         <AssociationConnector Association="INCLUSIVE_BDModel.FK_UsersResponse_TblUsers" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="INCLUSIVE_BDModel.TblNotifications" Width="1.5" PointX="3" PointY="21" />
-        <AssociationConnector Association="INCLUSIVE_BDModel.FK_TblNotifications_TblUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

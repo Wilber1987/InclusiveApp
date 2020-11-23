@@ -60,16 +60,6 @@
           <Property Name="IdModules" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" />
         </EntityType>
-        <EntityType Name="TblNotifications">
-          <Key>
-            <PropertyRef Name="IdNotification" />
-          </Key>
-          <Property Name="IdNotification" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="IdUser" Type="int" />
-          <Property Name="Date" Type="datetime" />
-          <Property Name="state" Type="int" />
-        </EntityType>
         <EntityType Name="TblPermission">
           <Key>
             <PropertyRef Name="IdPermission" />
@@ -206,18 +196,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblNotifications_TblUsers">
-          <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="0..1" />
-          <End Role="TblNotifications" Type="Self.TblNotifications" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblUsers">
-              <PropertyRef Name="IdUsers" />
-            </Principal>
-            <Dependent Role="TblNotifications">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TblQuestion_CatTypeQuestion">
           <End Role="CatTypeQuestion" Type="Self.CatTypeQuestion" Multiplicity="0..1" />
           <End Role="TblQuestion" Type="Self.TblQuestion" Multiplicity="*" />
@@ -333,7 +311,6 @@
           <EntitySet Name="TblForm" EntityType="Self.TblForm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblModulos" EntityType="Self.TblModulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMyModules" EntityType="Self.TblMyModules" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TblNotifications" EntityType="Self.TblNotifications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblPermission" EntityType="Self.TblPermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblQuestion" EntityType="Self.TblQuestion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblQuestionOptions" EntityType="Self.TblQuestionOptions" Schema="dbo" store:Type="Tables" />
@@ -361,10 +338,6 @@
           <AssociationSet Name="FK_TblMyModules_TblUsers" Association="Self.FK_TblMyModules_TblUsers">
             <End Role="TblUsers" EntitySet="TblUsers" />
             <End Role="TblMyModules" EntitySet="TblMyModules" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblNotifications_TblUsers" Association="Self.FK_TblNotifications_TblUsers">
-            <End Role="TblUsers" EntitySet="TblUsers" />
-            <End Role="TblNotifications" EntitySet="TblNotifications" />
           </AssociationSet>
           <AssociationSet Name="FK_TblQuestion_CatTypeQuestion" Association="Self.FK_TblQuestion_CatTypeQuestion">
             <End Role="CatTypeQuestion" EntitySet="CatTypeQuestion" />
@@ -542,7 +515,6 @@
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblNotifications" Relationship="INCLUSIVE_BDModel.FK_TblNotifications_TblUsers" FromRole="TblUsers" ToRole="TblNotifications" />
         </EntityType>
         <EntityType Name="TblUsersRol">
           <Key>
@@ -806,35 +778,7 @@
             <End Role="TblUsers" EntitySet="TblUsers" />
             <End Role="UsersResponse" EntitySet="UsersResponse" />
           </AssociationSet>
-          <EntitySet Name="TblNotifications" EntityType="INCLUSIVE_BDModel.TblNotifications" />
-          <AssociationSet Name="FK_TblNotifications_TblUsers" Association="INCLUSIVE_BDModel.FK_TblNotifications_TblUsers">
-            <End Role="TblUsers" EntitySet="TblUsers" />
-            <End Role="TblNotifications" EntitySet="TblNotifications" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="TblNotifications">
-          <Key>
-            <PropertyRef Name="IdNotification" />
-          </Key>
-          <Property Name="IdNotification" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IdUser" Type="Int32" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblUsers" Relationship="INCLUSIVE_BDModel.FK_TblNotifications_TblUsers" FromRole="TblNotifications" ToRole="TblUsers" />
-          <Property Name="state" Type="Int32" />
-        </EntityType>
-        <Association Name="FK_TblNotifications_TblUsers">
-          <End Type="INCLUSIVE_BDModel.TblUsers" Role="TblUsers" Multiplicity="0..1" />
-          <End Type="INCLUSIVE_BDModel.TblNotifications" Role="TblNotifications" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblUsers">
-              <PropertyRef Name="IdUsers" />
-            </Principal>
-            <Dependent Role="TblNotifications">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -979,17 +923,6 @@
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="IdQuestionOptions" ColumnName="IdQuestionOptions" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblNotifications">
-            <EntityTypeMapping TypeName="INCLUSIVE_BDModel.TblNotifications">
-              <MappingFragment StoreEntitySet="TblNotifications">
-                <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="IdNotification" ColumnName="IdNotification" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

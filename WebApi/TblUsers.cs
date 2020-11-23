@@ -20,7 +20,6 @@ namespace WebApi
             this.TblMyModules = new HashSet<TblMyModules>();
             this.TblUsersRol = new HashSet<TblUsersRol>();
             this.UsersResponse = new HashSet<UsersResponse>();
-            this.TblNotifications = new HashSet<TblNotifications>();
         }
     
         public int IdUsers { get; set; }
@@ -36,6 +35,5 @@ namespace WebApi
         public virtual ICollection<TblMyModules> TblMyModules { get; set; }
         public virtual ICollection<TblUsersRol> TblUsersRol { get; set; }
         public virtual ICollection<UsersResponse> UsersResponse { get; set; }
-        public virtual ICollection<TblNotifications> TblNotifications { get; set; }
     }
 }

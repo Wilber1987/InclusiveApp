@@ -39,6 +39,5 @@ namespace WebApi
         public DbSet<TblUsers> TblUsers { get; set; }
         public DbSet<TblUsersRol> TblUsersRol { get; set; }
         public DbSet<UsersResponse> UsersResponse { get; set; }
-        public DbSet<TblNotifications> TblNotifications { get; set; }
     }
 }
