@@ -28,18 +28,6 @@ namespace WebApi.Controllers
                 return false;
             }            
         }
-        
-        public Object PostTakeSeason(object User)
-        {
-            var JUser = JsonConvert.DeserializeObject<TblUsers>(User.ToString());
-            INCLUSIVE_BDEntities Model = new INCLUSIVE_BDEntities();
-            var Autenticate = from M in Model.TblUsers
-                              where M.Username == JUser.Username
-                                  && M.Password == JUser.Password
-                                  && M.State == "act"
-                              select new { M.IdUsers, M.Username, M.Mail, M.Photo, M.LastName, M.Name};
-            return Autenticate.ToList()[0];
-        }
         public Object PostRegister(object User)
         {
             var JUser = JsonConvert.DeserializeObject<TblUsers>(User.ToString());
@@ -53,8 +41,38 @@ namespace WebApi.Controllers
             }
             catch (Exception)
             {              
-                return false;
+                return true;
             }
+        }
+        public Object PostUpdateUser(object User)
+        {            
+            try
+            {
+                var JUser = JsonConvert.DeserializeObject<TblUsers>(User.ToString());
+                INCLUSIVE_BDEntities Model = new INCLUSIVE_BDEntities();
+                var UserF = Model.TblUsers.FirstOrDefault(U => U.IdUsers == JUser.IdUsers);                
+                UserF.LastName = JUser.LastName;
+                UserF.Mail = JUser.Mail;
+                UserF.Name = JUser.Name;
+                UserF.Password = JUser.Password;
+                UserF.Photo = JUser.Photo;
+                UserF.State = JUser.State;
+                Model.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return true;
+            }
+        }
+        public Object PostTakeUsers()
+        {
+            //var data = JsonConvert.DeserializeObject<TblUsers>(User.ToString());
+            //int IdUser = data.IdUsers;
+            INCLUSIVE_BDEntities Model = new INCLUSIVE_BDEntities();
+            var MyModules = from U in Model.TblUsers
+                            select new { U.Photo, U.IdUsers, U.Mail, U.Name, U.Password, U.State,U.Username };
+            return MyModules.ToList();
         }
 
     }
